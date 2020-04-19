@@ -7,7 +7,7 @@ import com.mongodb.lang.NonNull;
 
 public class DeviceVO {
 	
-	private Long id;
+	private String id;
 
 	@NonNull
 	@NotBlank
@@ -25,9 +25,10 @@ public class DeviceVO {
 	public DeviceVO() {
 	}
 
-	public DeviceVO(String name, String type, String manufacturer, DeviceConfiguration deviceConfiguration,
+	public DeviceVO(String id, String name, String type, String manufacturer, DeviceConfiguration deviceConfiguration,
 			String modelNumber) {
 		super();
+		this.id = id;
 		this.name = name;
 		this.type = type;
 		this.manufacturer = manufacturer;
@@ -35,11 +36,11 @@ public class DeviceVO {
 		this.modelNumber = modelNumber;
 	}
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

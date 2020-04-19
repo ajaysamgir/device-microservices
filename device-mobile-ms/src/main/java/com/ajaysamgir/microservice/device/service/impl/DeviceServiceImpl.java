@@ -1,5 +1,6 @@
 package com.ajaysamgir.microservice.device.service.impl;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.ajaysamgir.microservice.device.domain.Device;
@@ -18,6 +19,21 @@ public class DeviceServiceImpl implements DeviceService {
 	@Override
 	public Optional<DeviceVO> createDevice(DeviceVO deviceVO) {
 		Device device = repository.save(DeviceUtility.getDeviceDomain(deviceVO));
-		return device != null ? DeviceUtility.fromDeviceDomain(device) : Optional.empty();
+		return device != null ? Optional.of(DeviceUtility.fromDeviceDomain(device)) : Optional.empty();
+	}
+
+	@Override
+	public Optional<List<DeviceVO>> getAllDevices() {
+		List<Device> deviceList = repository.findAll();
+		return deviceList != null ? Optional.of(DeviceUtility.fromDeviceDomainList(deviceList)) : Optional.empty();
+	}
+
+	@Override
+	public Optional<DeviceVO> updateDevice(DeviceVO deviceVO) {
+		if (repository.findById(deviceVO.getId()) != null) {
+			Device device = repository.save(DeviceUtility.getDeviceDomain(deviceVO));
+			return Optional.of(DeviceUtility.fromDeviceDomain(device));
+		}
+		return Optional.empty();
 	}
 }
