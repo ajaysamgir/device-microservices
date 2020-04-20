@@ -3,19 +3,17 @@ package com.ajaysamgir.microservice.device.vo;
 import javax.validation.constraints.NotBlank;
 
 import com.ajaysamgir.microservice.device.domain.DeviceConfiguration;
-import com.mongodb.lang.NonNull;
 
 public class DeviceVO {
-	
+
 	private String id;
 
-	@NonNull
-	@NotBlank
+	@NotBlank(message = "{deviceName.not-null}")
 	private String name;
 
 	private String type;
 
-	@NonNull
+	@NotBlank(message = "{manufacturer.not-null}")
 	private String manufacturer;
 
 	private DeviceConfiguration deviceConfiguration;

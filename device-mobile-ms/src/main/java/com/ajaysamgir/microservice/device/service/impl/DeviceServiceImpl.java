@@ -36,4 +36,10 @@ public class DeviceServiceImpl implements DeviceService {
 		}
 		return Optional.empty();
 	}
+
+	@Override
+	public Optional<DeviceVO> getDeviceById(String id) {
+		Optional<Device> device = repository.findById(id);
+		return device != null ? Optional.of(DeviceUtility.fromDeviceDomain(device.get())) : Optional.empty();
+	}
 }

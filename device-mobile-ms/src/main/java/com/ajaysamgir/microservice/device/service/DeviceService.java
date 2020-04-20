@@ -15,5 +15,7 @@ public interface DeviceService {
 	Optional<List<DeviceVO>> getAllDevices();
 
 	Optional<DeviceVO> updateDevice(DeviceVO deviceVO);
+
+	Optional<DeviceVO> getDeviceById(String id);
 	
 }
