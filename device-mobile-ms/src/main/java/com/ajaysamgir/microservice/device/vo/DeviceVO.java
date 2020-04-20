@@ -2,6 +2,7 @@ package com.ajaysamgir.microservice.device.vo;
 
 import javax.validation.constraints.NotBlank;
 
+import com.ajaysamgir.microservice.device.domain.Device;
 import com.ajaysamgir.microservice.device.domain.DeviceConfiguration;
 
 public class DeviceVO {
@@ -32,6 +33,15 @@ public class DeviceVO {
 		this.manufacturer = manufacturer;
 		this.deviceConfiguration = deviceConfiguration;
 		this.modelNumber = modelNumber;
+	}
+
+	public DeviceVO(Device device) {
+		this.id = device.getId();
+		this.name = device.getName();
+		this.type = device.getType();
+		this.manufacturer = device.getManufacturer();
+		this.deviceConfiguration = device.getDeviceConfiguration();
+		this.modelNumber = device.getModelNumber();
 	}
 
 	public String getId() {

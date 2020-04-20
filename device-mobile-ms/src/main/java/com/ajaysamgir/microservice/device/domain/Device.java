@@ -3,6 +3,7 @@ package com.ajaysamgir.microservice.device.domain;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.ajaysamgir.microservice.device.vo.DeviceVO;
 import com.mongodb.lang.NonNull;
 
 @Document
@@ -24,9 +25,6 @@ public class Device {
 	@NonNull
 	private String modelNumber;
 
-	public Device() {
-	}
-
 	public Device(String name, String type, String manufacturer, DeviceConfiguration deviceConfiguration,
 			String modelNumber) {
 		super();
@@ -35,6 +33,18 @@ public class Device {
 		this.manufacturer = manufacturer;
 		this.deviceConfiguration = deviceConfiguration;
 		this.modelNumber = modelNumber;
+	}
+
+	public Device(DeviceVO deviceVO) {
+		this.name = deviceVO.getName();
+		this.type = deviceVO.getType();
+		this.manufacturer = deviceVO.getManufacturer();
+		this.deviceConfiguration = deviceVO.getDeviceConfiguration();
+		this.modelNumber = deviceVO.getModelNumber();
+	}
+
+	public Device() {
+		super();
 	}
 
 	public String getId() {
