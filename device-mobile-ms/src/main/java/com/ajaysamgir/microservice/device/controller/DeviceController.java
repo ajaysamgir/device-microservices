@@ -46,7 +46,7 @@ public class DeviceController {
 		return new ResponseEntity<DeviceVO>(response.get(), HttpStatus.OK);
 	}
 
-	@PutMapping("/{id}")
+	@PutMapping("/id/{id}")
 	public ResponseEntity<DeviceVO> updateDevice(@Valid @RequestBody DeviceVO deviceVO) {
 		Optional<DeviceVO> response = deviceService.updateDevice(deviceVO);
 		return new ResponseEntity<DeviceVO>(response.get(), HttpStatus.OK);

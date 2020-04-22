@@ -18,7 +18,7 @@ public class DeviceServiceImpl implements DeviceService {
 
 	@Override
 	public Optional<DeviceVO> createDevice(DeviceVO deviceVO) {
-		Device device = repository.save(DeviceUtility.getDeviceDomain(deviceVO));
+		Device device = repository.insert(DeviceUtility.getDeviceDomain(deviceVO));
 		return device != null ? Optional.of(DeviceUtility.fromDeviceDomain(device)) : Optional.empty();
 	}
 
